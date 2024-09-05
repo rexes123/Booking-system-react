@@ -12,7 +12,6 @@ export default function Profile() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false); //state for showing uploading status
   const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   // const authentication = auth.currentUser;
   // console.log(authentication);
@@ -140,19 +139,23 @@ export default function Profile() {
               }}
             />
           </label>
-          {uploading && <p>Uploading...</p>}
+          {uploading && <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>}
+
+
         </div>
 
         {userData ? (
-          <div style={{marginTop: "20px"}}>
+          <div style={{ marginTop: "20px" }}>
             <form>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Name</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder={userData.name} disabled/>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder={userData.name} disabled />
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Email</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder={userData.email} disabled/>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder={userData.email} disabled />
               </div>
             </form>
           </div>
