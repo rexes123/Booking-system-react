@@ -38,12 +38,17 @@ export default function Login() {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
       const user = response.user;
+
+      //Get firebase ID token JSW and store it
+      const idToken = await user.getIdToken();
+
     
       localStorage.setItem(
         'user',
         JSON.stringify({
           uid: user.uid,
           email: user.email,
+          token: idToken
         })
       );
 
